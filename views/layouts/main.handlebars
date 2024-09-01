@@ -3,36 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog</title>
-  <link rel="stylesheet" type="text/css" href="/css/jass.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <title>Bootcamp-Blog</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
-    <header>
-      <h1>Welcome to the Blog</h1>
-    </header>
-    <nav>
-      <a href="/">Home</a>
-      {{#if loggedIn}}
-      <a href="/new-post">New Post</a>
-      <button id="logout" class="btn-no-style">Logout</button>
-      {{else}}
-      <a href="/login">Login</a>
-      {{/if}}
-    </nav>
+  <header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap justify-content-center">
+      <h1 class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">Bootcamp Blog</h1>
+    </div>
+  </header>
+  <nav class="py-2 bg-light border-bottom">
+    <div class="container d-flex flex-wrap">
+      <ul class="nav me-auto">
+        <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
+        {{#if loggedIn}}
+        <li class="nav-item"><a href="/new-post" class="nav-link link-dark px-2">New Post</a></li>
+        {{/if}}
+      </ul>
+      <ul class="nav">
+        {{#if loggedIn}}
+        
+        <li class="nav-item"><button id="logout" class="nav-link link-dark px-2">Logout</button></li>
+        {{else}}
+        <li class="nav-item"><a href="/login" class="nav-link link-dark px-2">Login</a></li>
+        <li class="nav-item"><a href="/signup" class="nav-link link-dark px-2">Signup</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
     <main>
-      <aside>
-        <h2>Enjoy the posts!</h2>
-      </aside>
-      <div class="posts">
-        {{{body}}}
-      </div>
-    </main>
-    {{#if loggedIn}}
-    <script src="/js/logout.js"></script>
-    {{/if}}
-    <script src="/js/comment.js"></script>
+    <div>
+      {{{body}}}
+    </div>
+  </main>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 
