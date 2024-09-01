@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
     }
 );
 
-router.get('/post/:id', withAuth, async (req, res) => {
+router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
         include: [
@@ -67,37 +67,14 @@ router.get('/post/:id', withAuth, async (req, res) => {
     }
 );
 
-router.get('/comment/:id', withAuth, async (req, res) => {
-    try {
-        const postData = await Post.findByPk(req.params.id, {
-        include: [
-            {
-            model: User,
-            attributes: ['username'],
-            },
-            {
-            model: Comment,
-            include: [
-                {
-                model: User,
-                attributes: ['username'],
-                },
-            ],
-            },
-        ],
-        });
-    
-        const post = postData.get({ plain: true });
-    
-        res.render('comment', {
-        post,
+router.get('/new-post', (req, res) => {
+    res.render('new-post', {
         loggedIn: req.session.loggedIn,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+    });
     }
 );
+
+
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
