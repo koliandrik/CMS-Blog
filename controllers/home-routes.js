@@ -10,7 +10,17 @@ router.get('/', async (req, res) => {
             model: User,
             attributes: ['username'],
             },
+            {
+            model: Comment,
+            include: [
+                {
+                model: User,
+                attributes: ['username'],
+                },
+            ],
+            },
         ],
+        order: [['createdAt', 'DESC']],
         });
     
         const posts = postData.map((post) => post.get({ plain: true }));
