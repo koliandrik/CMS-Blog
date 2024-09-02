@@ -1,18 +1,18 @@
-<div class="card">
-    <h2 class="page-title">New Post</h2>
-    <form class="new-post-form">
-        <div class="form-group">
-            <label for="post-title">Title:</label>
-            <input class="form-input" type="text" id="post-title" />
+<div class="container">
+    <div class="my-4 card">
+        <div class="card-header text-center">
+            <h2 class="page-title">New Post</h2>
         </div>
-        <div class="form-group">
-            <label for="post-content">Content:</label>
-            <textarea class="form-input" id="post-content"></textarea>
+        <div class="card-body">
+            <form class="new-post-form d-flex flex-column">
+                    <label for="post-title">Title:</label>
+                    <input class="form-input" type="text" id="post-title" />
+                    <label for="post-content">Content:</label>
+                    <textarea class="form-input" id="post-content"></textarea>
+                    <button class="my-4 btn btn-primary" type="submit">Create Post</button> 
+            </form>
         </div>
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit">Create Post</button> 
-        </div>
-    </form>
+    </div>
 </div>
 
 <script src="./js/new-post.js"></script>

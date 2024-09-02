@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="col">
+      <h2 class="my-4 display-4 text-center">My Posts</h2>
+        {{#each posts}}
+        <div class="my-4 card container">
+            <div class="card-header">
+                <h5 class="card-title text-center">{{title}}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{content}}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between">  
+                <button class="btn btn-warning align-end edit-post" data-post-id="{{id}}">Edit Post</button>
+                <button class="btn btn-danger align-end delete-post" data-post-id="{{id}}">Delete Post</button>
+                <a href="/post/{{id}}" class="btn btn-primary align-end">View Post</a>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+        <div class="container text-center">
+            <a href="/new-post" class="btn btn-primary my-4">Create New Post</a>
+        </div>
+    </div>
+</div>
+
+<script src="/js/dashboard.js"></script>

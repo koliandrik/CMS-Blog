@@ -1,24 +1,31 @@
 const postCommentHandler = async (event) => {
     event.preventDefault();
-
-    const comment = document.querySelector('#comment-content').value.trim();
+ 
+    const comment_text = document.querySelector('#comment-content').value.trim();
     const post_id = event.target.getAttribute('data-post-id');
 
-    if (comment) {
+
+    if (comment_text && post_id) {
         const response = await fetch('/api/comments', {
             method: 'POST',
             body: JSON.stringify({ comment_text, post_id }),
             headers: { 'Content-Type': 'application/json' },
         });
 
+        console.log(response);
+
         if (response.ok) {
-            document.location.replace('/');
+            document.location.reload();
         } else {
-            alert('Failed to create comment');
+            console.log(response); // Log the response object for debugging
+            alert('Failed to post comment');
         }
-    }
+    } else {
+        alert('Comment content/post ID is missing.');
+}
 };
 
+
 document
-    .querySelector('.new-comment-form')
-    .addEventListener('submit', postCommentHandler);
+    .querySelector('.post-comment')
+    .addEventListener('click', postCommentHandler);

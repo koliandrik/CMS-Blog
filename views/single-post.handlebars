@@ -9,14 +9,26 @@
                 <p class="text-end">Author: {{post.user.username}}</p>
                 <p class="text-end">Published on: {{formatDate post.date}}</p>
             </div>
-            <div class="card-footer text-end new-comment-form">
-                <textarea class="form-control" id="comment-content" placeholder="Add a comment"></textarea>
-                <button class="btn btn-primary mt-2" type="submit" id="add-comment">Add Comment</button>
+        </div>
+        
+        <div id="comment-list-{{post.id}}" class="container center">
+            {{#each post.comments}}
+            <div class="my-4 card container comment d-flex">
+                <p class="left-align grey">{{this.user.username}} commented:</p>
+                <p class="text-center">{{this.comment_text}}</p>
+            </div>
+            {{/each}}
+
+        {{#if loggedIn}}
+        <div class="card my-4">
+            <div id="comments" class="d-flex flex-column new-comment-form">
+                <textarea id="comment-content" placeholder="Enter your comment" class="white" rows="3"></textarea>
+                <button class="post-comment btn btn-primary" data-post-id="{{post.id}}">Post Comment</button>
             </div>
         </div>
-        <div class="my-4">
-            <h3>Comments</h3>
-            {{comment}}
+        {{else}}
+        <p>You must be logged in to post comments.</p>
+        {{/if}}
     </div>
 </div>
 
